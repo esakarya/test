@@ -3,8 +3,6 @@ kind: Service
 metadata:
   name: kobimate-odoo18-service
 spec:
-  selector: 
-    app: postgress-server
   type: ClusterIP  
   ports:
     - name: odoo
