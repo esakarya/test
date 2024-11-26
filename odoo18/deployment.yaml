@@ -24,9 +24,9 @@ spec:
           env:
             #Database connection configuration
             - name: DB_HOST
-              value: pg-kobimate-r
+              value: my-cluster-r
             - name: DB_REPLICA_HOST
-              value: pg-kobimate-w
+              value: my-cluster-rw
             - name: DB_NAME
               value: odoo18
             - name: DB_PASSWORD 
