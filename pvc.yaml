@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: kobimate-odoo18-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: ceph-rbd-sc
+  resources:
+    requests:
+      storage: 5Gi
