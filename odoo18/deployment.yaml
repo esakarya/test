@@ -19,7 +19,7 @@ spec:
       #  - name: git-sync-secret
       containers:
         - name: kobimate-odoo18
-          image: ghcr.io/acsone/odoo-bedrock:18.0-py312-noble-lates
+          image: ghcr.io/acsone/odoo-bedrock:18.0-py312-noble-latest
           imagePullPolicy: Always
           env:
             #Database connection configuration
