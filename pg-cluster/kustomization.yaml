@@ -3,5 +3,6 @@ kind: Kustomization
 metadata:
   name: pg-cluster-install
 resources:
+- pg-operator.yaml
 - secret.yaml
 - cluster.yaml
