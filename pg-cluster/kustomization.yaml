@@ -5,4 +5,4 @@ metadata:
 resources:
 - secret.yaml
 - cluster.yaml
-- pg-operator.yaml
+#- pg-operator.yaml
