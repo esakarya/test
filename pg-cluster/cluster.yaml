@@ -1,9 +1,24 @@
 apiVersion: postgresql.cnpg.io/v1
 kind: Cluster
 metadata:
-  name: my-cluster
+  name: kobimate-pg
+  namespace: default
 spec:
   instances: 3
+  primaryUpdateStrategy: unsupervised
+  imageName: ghcr.io/cloudnative-pg/postgis:17.2
+  imagePullPolicy: IfNotPresent
+  superuserSecret:
+ name: superuser-secret
+  bootstrap:
+  postgresql:
+    parameters:
+      shared_buffers: 256MB
+      pg_stat_statements.max: '10000'
+      pg_stat_statements.track: all
+      auto_explain.log_min_duration: '10s'
+  enableSuperuserAccess: true
+    superuserSecret:
+    name: pg-super-user
   storage:
-    size: 3Gi
-    
+    size: 5Gi
