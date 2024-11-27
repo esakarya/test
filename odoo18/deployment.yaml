@@ -19,21 +19,25 @@ spec:
       #  - name: git-sync-secret
       containers:
         - name: kobimate-odoo18
-          image: odoo:18
+          image: ghcr.io/acsone/odoo-bedrock:18.0-py312-noble-latest
           imagePullPolicy: Always
           env:
             #Database connection configuration
-            - name: HOST
-              value: my-cluster-rw
-            - name: PASSWORD 
-              value: n8YzEJz79Qun3TV5PsmGPbMDBwHC91Ihn5U3AxWcAnTsGvR1xEmGbQvsISjgMDAU
-            - name: USER
-              value: app
+            - name: DB_HOST
+              value: kobimate-pg-r
+            - name: DB_REPLICA_HOST
+              value: kobimate-pg-rw
+            - name: DB_NAME
+              value: odoo18
+            - name: DB_PASSWORD 
+              value: postgres
+            - name: DB_USER
+              value: postgres
           ports:
             - containerPort: 8069
           volumeMounts:
             - name: odoo18-kobimate-volume
-              mountPath: /mnt/extra-addons
+              mountPath: /data/odoo
 
       volumes:
         - name: odoo18-kobimate-volume
