@@ -1,3 +1,4 @@
+#https://github.com/cloudnative-pg/cloudnative-pg/blob/main/docs/src/samples/cluster-example-full.yaml
 apiVersion: postgresql.cnpg.io/v1
 kind: Cluster
 metadata:
@@ -8,8 +9,6 @@ spec:
   primaryUpdateStrategy: unsupervised
   imageName: ghcr.io/cloudnative-pg/postgis:17.2
   imagePullPolicy: IfNotPresent
-  superuserSecret:
- name: superuser-secret
   bootstrap:
   postgresql:
     parameters:
@@ -18,7 +17,7 @@ spec:
       pg_stat_statements.track: all
       auto_explain.log_min_duration: '10s'
   enableSuperuserAccess: true
-    superuserSecret:
+  superuserSecret:
     name: pg-super-user
   storage:
     size: 5Gi
