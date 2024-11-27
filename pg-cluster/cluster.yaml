@@ -7,9 +7,15 @@ metadata:
 spec:
   instances: 3
   primaryUpdateStrategy: unsupervised
-  imageName: ghcr.io/cloudnative-pg/postgis:17.2
+  imageName: ghcr.io/cloudnative-pg/postgresql:17.2-5-bookworm
   imagePullPolicy: IfNotPresent
   bootstrap:
+  #initdb:
+  #    postInitTemplateSQL:
+  #      - CREATE EXTENSION postgis;
+  #      - CREATE EXTENSION postgis_topology;
+  #      - CREATE EXTENSION fuzzystrmatch;
+  #      - CREATE EXTENSION postgis_tiger_geocoder;
   postgresql:
     parameters:
       shared_buffers: 256MB
