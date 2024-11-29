@@ -33,6 +33,8 @@ spec:
               value: "8639159"
             - name: DB_USER
               value: odoo
+            - name: LIST_DB
+              value: True
           ports:
             - containerPort: 8069
           volumeMounts:
