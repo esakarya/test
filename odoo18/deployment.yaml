@@ -5,6 +5,9 @@ metadata:
   namespace: default
   labels:
     app: odoo18-paket-1
+  finalizers:
+  - kubernetes
+  - resources-finalizer.argocd.argoproj.io
 spec:
   replicas: 1
   selector:
@@ -49,7 +52,7 @@ spec:
           volumeMounts:
             - name: odoo18-kobimate-volume
               mountPath: /data/odoo
-          terminationGracePeriodSeconds: 0
+          terminationGracePeriodSeconds: 30
 
       volumes:
         - name: odoo18-kobimate-volume
