@@ -35,6 +35,10 @@ spec:
               value: odoo
             - name: LIST_DB
               value: "true"
+            - name: ADMIN_PASSWD
+              value: "$pbkdf2-sha512$25000$Vuq919pbq7XW2tubsxZibA$1G82RkbAGJuADzQ8sCvWtj9287UeLqmhal5agD1n73oQOP8L6yy2ZJhTiDs.ESy/HWiAVC9AxTLkNLMy9jgeoA"
+            - name: WORKERS
+              value: "2"
           ports:
             - containerPort: 8069
           volumeMounts:
