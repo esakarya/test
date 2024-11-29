@@ -19,8 +19,6 @@ spec:
     spec:
       imagePullSecrets:
         - name: git-sync-secret
-      strategy:
-        type: Recreate
       containers:
         - name: kobimate-odoo18
           image: ghcr.io/kobimate/odoo:18.0-latest
