@@ -5,6 +5,7 @@ metadata:
   namespace: default
   labels:
     app: odoo18-paket-1
+
 spec:
   replicas: 1
   strategy:
