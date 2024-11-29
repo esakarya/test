@@ -15,11 +15,11 @@ spec:
       labels:
         app: kobimate-odoo18
     spec:
-      #imagePullSecrets:
-      #  - name: git-sync-secret
+      imagePullSecrets:
+        - name: git-sync-secret
       containers:
         - name: kobimate-odoo18
-          image: ghcr.io/akretion/odoo-docker:18.0-latest
+          image: ghcr.io/kobimate/odoo:18.0-latest
           imagePullPolicy: Always
           env:
             #Database connection configuration
