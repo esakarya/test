@@ -27,12 +27,12 @@ spec:
               value: kobimate-pg-r
             - name: DB_REPLICA_HOST
               value: kobimate-pg-rw
-            - name: DB_NAME
-              value: odoo18
+            #- name: DB_NAME
+            #  value: odoo18
             - name: DB_PASSWORD 
-              value: postgres
+              value: 8639159
             - name: DB_USER
-              value: postgres
+              value: odoo
           ports:
             - containerPort: 8069
           volumeMounts:
