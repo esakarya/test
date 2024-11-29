@@ -20,7 +20,7 @@ spec:
       containers:
         - name: kobimate-odoo18
           image: ghcr.io/kobimate/odoo:18.0-latest
-          imagePullPolicy: Always
+          imagePullPolicy: IfNotPresent
           env:
             #Database connection configuration
             - name: DB_HOST
@@ -34,7 +34,7 @@ spec:
             - name: DB_USER
               value: odoo
             - name: LIST_DB
-              value: True
+              value: "true"
           ports:
             - containerPort: 8069
           volumeMounts:
