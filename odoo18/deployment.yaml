@@ -5,7 +5,6 @@ metadata:
   namespace: default
   labels:
     app: odoo18-paket-1
-
 spec:
   replicas: 1
   strategy:
@@ -20,6 +19,8 @@ spec:
     spec:
       imagePullSecrets:
         - name: git-sync-secret
+      strategy:
+        type: Recreate
       containers:
         - name: kobimate-odoo18
           image: ghcr.io/kobimate/odoo:18.0-latest
@@ -46,14 +47,12 @@ spec:
               value: "odoo18"
             - name: ODOO_LIMIT_LITEVAL_BUFFER
               value: "10240000"
-              
           ports:
             - containerPort: 8069
           volumeMounts:
             - name: odoo18-kobimate-volume
               mountPath: /data/odoo
       terminationGracePeriodSeconds: 30
-
       volumes:
         - name: odoo18-kobimate-volume
           persistentVolumeClaim:
