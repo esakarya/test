@@ -44,6 +44,7 @@ spec:
           volumeMounts:
             - name: odoo18-kobimate-volume
               mountPath: /data/odoo
+          terminationGracePeriodSeconds: 0
 
       volumes:
         - name: odoo18-kobimate-volume
