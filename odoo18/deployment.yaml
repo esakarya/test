@@ -7,7 +7,6 @@ metadata:
     app: odoo18-paket-1
   finalizers:
   - kubernetes
-  - resources-finalizer.argocd.argoproj.io
 spec:
   replicas: 1
   selector:
