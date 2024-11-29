@@ -9,6 +9,9 @@ metadata:
   - kubernetes
 spec:
   replicas: 1
+  strategy:
+    type: Recreate
+    rollingUpdate: nul
   selector:
     matchLabels:
       app: kobimate-odoo18
