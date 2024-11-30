@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: kobimate-odoo18
-  namespace: argocd
+  namespace: default
   labels:
     app: odoo18-paket-1
 spec:
