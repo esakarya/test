@@ -1,7 +1,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: argocd-server-ingress-external
+  name: kobimate-odoo18-ingress
   namespace: argocd
   annotations:
     nginx.ingress.kubernetes.io/force-ssl-redirect: "false"
@@ -14,22 +14,22 @@ spec:
   ingressClassName: kobimate-odoo18-ingress
   rules:
   - host: odoo18.kobimate.com
-    http:
+    https:
       paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: kobimate-odoo18-service
-            port:
-              bumber: 8069
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: kobimate-odoo18-service
-            port:
-              number: 8072
+        - path: /
+          pathType: Prefix
+          backend:
+            service:
+              name: kobimate-odoo18-service
+              port:
+                number: 8069
+        - path: /
+          pathType: Prefix
+          backend:
+            service:
+              name: kobimate-odoo18-service
+              port:
+                number: 8072
   tls:
   - hosts:
     - odoo18.kobimate.com
