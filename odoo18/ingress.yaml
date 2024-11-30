@@ -24,12 +24,12 @@ spec:
             port:
               bumber: 8069
       - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: kobimate-odoo18-service
-                port:
-                  number: 8072
+        pathType: Prefix
+        backend:
+          service:
+            name: kobimate-odoo18-service
+            port:
+              number: 8072
   tls:
   - hosts:
     - odoo18.kobimate.com
