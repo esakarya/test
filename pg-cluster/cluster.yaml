@@ -3,7 +3,7 @@ apiVersion: postgresql.cnpg.io/v1
 kind: Cluster
 metadata:
   name: kobimate-pg
-  namespace: default
+  namespace: argocd
 spec:
   instances: 3
   primaryUpdateStrategy: unsupervised
