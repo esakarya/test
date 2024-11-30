@@ -6,7 +6,8 @@ spec:
   type: ClusterIP  
   ports:
     - name: odoo
-      port: 8069
+      port: 80
+      targetPort: 8069
     - name: longpolling
       port: 8072
   selector:
