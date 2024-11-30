@@ -13,7 +13,7 @@ spec:
   #    secretName: kobimate-tls
   rules:
     - host: odoo18.kobimate.com
-      https:
+      http:
         paths:
           - path: /
             pathType: Prefix
