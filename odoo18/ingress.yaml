@@ -12,22 +12,21 @@ spec:
   #    - kobimate.com
   #    secretName: kobimate-tls
   rules:
-    rules:
     - host: odoo18.kobimate.com
       http:
         paths:
-          - backend:
+          - path: /
+            pathType: Prefix
+            backend:
               service:
-                name: odooweb
+                name: kobimate-odoo18-service
                 port:
                   number: 8069
-            path: /
+          - path: /
             pathType: Prefix
-          - backend:
+            backend:
               service:
-                name: odoolp
+                name: kobimate-odoo18-service
                 port:
                   number: 8072
-            path: /
-            pathType: Prefix
-                  
+
