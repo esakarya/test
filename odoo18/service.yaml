@@ -5,8 +5,11 @@ metadata:
 spec:
   type: ClusterIP  
   ports:
-    - name: odoo
+    - name: odoo_http
       port: 80
+      targetPort: 8069
+    - name: odoo_https
+      port: 443
       targetPort: 8069
     - name: longpolling
       port: 8072
