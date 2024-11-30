@@ -1,12 +1,9 @@
-#Regular Service
 apiVersion: v1
 kind: Service
 metadata:
   name: kobimate-odoo18-service
 spec:
-  selector: 
-    app: postgress-server
-  type: ClusterIP  
+  type: ClusterIP
   ports:
     - name: odoo
       port: 8069
