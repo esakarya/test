@@ -2,16 +2,23 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: kobimate-odoo18-ingress
-  namespace: argocd
+  namespace: default
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    cert-manager.io/cluster-issuer: http-letsencrypt-staging     
 spec:
+  tls:
+    - hosts:
+      - kobimate.com
+      secretName: kobimate-tls
   rules:
-  - host: odoo18.kobimate.com
-    http:
-      paths:
-      - pathType: Prefix
-        path: "/"
-        backend:
-          service:
-            name: kobimate-odoo18-service
-            port:
-              number: 8069
+    - host: odoo18.kobimate.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: kobimate-odoo18-service
+                port:
+                  number: 8069
