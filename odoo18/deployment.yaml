@@ -52,18 +52,7 @@ spec:
             - name: SERVER_WIDE_MODULES
               value: "web,session_redis"
           ports:
-            - name: web
-              containerPort: 8069
-          readinessProbe:
-            tcpSocket:
-              port: 8069
-            initialDelaySeconds: 2
-            periodSeconds: 2
-          livenessProbe:
-            tcpSocket:
-              port: 8069
-            initialDelaySeconds: 30
-            periodSeconds: 30
+            - containerPort: 8069
           volumeMounts:
             - name: odoo18-kobimate-volume
               mountPath: /data/odoo
