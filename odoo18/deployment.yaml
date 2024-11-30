@@ -42,15 +42,14 @@ spec:
             - name: ODOO_SESSION_REDIS
               value: "1"
             - name: ODOO_SESSION_REDIS_HOST
-              value: "odoo18"
+              value: "argocd-redis-ha"
+            - name: ODOO_SESSION_REDIS_PORT
+              value: "6380"
             - name: ODOO_SESSION_REDIS_PASSWORD
               value: "EG95ErbDpxt4t01g"
             - name: ODOO_SESSION_REDIS_PREFIX
               value: "odoo18"
-            - name: ODOO_SESSION_REDIS_PREFIX
-              value: "odoo18"
-            - name: ODOO_SESSION_REDIS_PORT
-              value: "6380"
+
             - name: SERVER_WIDE_MODULES
               value: "web,session_redis"
           ports:
