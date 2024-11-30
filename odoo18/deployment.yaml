@@ -42,7 +42,7 @@ spec:
             - name: ODOO_SESSION_REDIS
               value: "1"
             - name: ODOO_SESSION_REDIS_HOST
-              value: "argocd-redis-ha"
+              value: "argocd-redis-ha-haproxy"
             - name: ODOO_SESSION_REDIS_PORT
               value: "6379"
             - name: ODOO_SESSION_REDIS_PASSWORD
