@@ -52,7 +52,8 @@ spec:
             - name: SERVER_WIDE_MODULES
               value: "web,session_redis"
           ports:
-            - containerPort: 8069
+          - containerPort: 8069
+          - containerPort: 8072
           volumeMounts:
             - name: odoo18-kobimate-volume
               mountPath: /data/odoo
