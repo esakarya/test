@@ -22,7 +22,7 @@ spec:
       containers:
         - name: kobimate-odoo18
           image: ghcr.io/kobimate/odoo:18.0-latest
-          imagePullPolicy: IfNotPresent
+          imagePullPolicy: Always
           env:
             #Database connection configuration
             - name: DB_HOST
@@ -45,6 +45,8 @@ spec:
               value: "odoo18"
             - name: ODOO_LIMIT_LITEVAL_BUFFER
               value: "10240000"
+            - name: SERVER_WIDE_MODULES
+              value: "web,session_redis"
           ports:
             - containerPort: 8069
           volumeMounts:
