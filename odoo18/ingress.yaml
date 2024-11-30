@@ -8,9 +8,9 @@ metadata:
     cert-manager.io/cluster-issuer: http-letsencrypt-staging     
 spec:
   tls:
-    #- hosts:
-    #  - kobimate.com
-    #  secretName: kobimate-tls
+    - hosts:
+      - odoo18.kobimate.com
+      secretName: kobimate-tls
   rules:
     - host: odoo18.kobimate.com
       https:
