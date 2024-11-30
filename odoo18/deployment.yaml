@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: kobimate-odoo18
-  namespace: default
+  namespace: argocd
   labels:
     app: odoo18-paket-1
 spec:
@@ -42,9 +42,9 @@ spec:
             - name: ODOO_SESSION_REDIS
               value: "1"
             - name: ODOO_SESSION_REDIS_HOST
-              value: "10.43.107.185"
+              value: "argocd-redis-ha-haproxy"
             - name: ODOO_SESSION_REDIS_PORT
-              value: "6380"
+              value: "6379"
             - name: ODOO_SESSION_REDIS_PASSWORD
               value: "EG95ErbDpxt4t01g"
             - name: ODOO_SESSION_REDIS_PREFIX
