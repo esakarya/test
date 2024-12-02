@@ -16,7 +16,7 @@ spec:
   #    secretName: kobimate-tls
   rules:
     - host: k8.kobimate.com
-      http:
+      https:
         paths:
           - path: /
             pathType: Prefix
