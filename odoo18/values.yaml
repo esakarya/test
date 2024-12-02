@@ -1,29 +1,33 @@
-# Default values for helm-guestbook.
+# Default values for sidecarinjector.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
 replicaCount: 1
-
+appname: sidecarinjector
+namespace: sidecarinjector
 image:
-  repository: gcr.io/heptio-images/ks-guestbook-demo
-  tag: 0.1
-  pullPolicy: IfNotPresent
+  repository: mayankkr/sidecarinjector
+  tag: v1
+  pullPolicy: Always
 
-containerPort: 80
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
 
 service:
   type: ClusterIP
-  port: 80
-  name: emrah
+  port: 443
+  targetPort: 8443
 
 ingress:
   enabled: false
   annotations: {}
     # kubernetes.io/ingress.class: nginx
     # kubernetes.io/tls-acme: "true"
-  path: /
   hosts:
-    - chart-example.local
+    - host: chart-example.local
+      paths: []
+
   tls: []
   #  - secretName: chart-example-tls
   #    hosts:
@@ -35,14 +39,16 @@ resources: {}
   # resources, such as Minikube. If you do want to specify resources, uncomment the following
   # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
   # limits:
-  #  cpu: 100m
-  #  memory: 128Mi
+  #   cpu: 100m
+  #   memory: 128Mi
   # requests:
-  #  cpu: 100m
-  #  memory: 128Mi
+  #   cpu: 100m
+  #   memory: 128Mi
 
 nodeSelector: {}
 
 tolerations: []
 
 affinity: {}
+
+caBundle:

@@ -5,7 +5,7 @@ metadata:
 spec:
   type: ClusterIP
   ports:
-    - name: {{ .Values.service.name }}
+    - name: {{ .Values.appname }}
       port: 8069
       protocol: TCP
       targetPort: 8069
