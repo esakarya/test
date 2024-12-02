@@ -6,26 +6,26 @@ metadata:
   annotations:
     nginx.ingress.kubernetes.io/force-ssl-redirect: "false"
     kubernetes.io/ingress.class: "public "   
-    #cert-manager.io/cluster-issuer: http-letsencrypt-staging 
+    cert-manager.io/cluster-issuer: http-letsencrypt-prod
 spec:
-  #tls:
-  #  - hosts:
-  #    - k8.kobimate.com
-  #    secretName: odoo18-tls
+  tls:
+    - hosts:
+      - k8.kobimate.com
+      secretName: odoo18-tls
   rules:
     - host: k8.kobimate.com
       http:
         paths:
           - backend:
               service:
-                name: kobimate-odoo18
+                name: odoo18-service
                 port:
                   number: 8069
             path: /
             pathType: Prefix
           - backend:
               service:
-                name: kobimate-odoo18
+                name: odoo18-service
                 port:
                   number: 8072
             path: /websocket
