@@ -2,7 +2,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: odoo-18-app
+  name: odoo-18-ap
   namespace: argocd
 spec:
   destination:
