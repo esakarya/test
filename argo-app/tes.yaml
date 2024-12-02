@@ -1,35 +1,14 @@
 apiVersion: argoproj.io/v1alpha1
-kind: ApplicationSet
+kind: Application
 metadata:
-  name: general
+  name: guest-book
   namespace: argocd
-  #finalizers:
-  #- "resources-finalizer.argocd.argoproj.io"
 spec:
-  generators:
-  - git:
-      repoURL: https://github.com/esakarya/test
-      revision: master
-      directories:
-      - path: odoo18
-  template:
-    metadata:
-      name: '{{path.basename}}'
-    spec:
-      project: default
-      syncPolicy:
-        automated:
-          prune: true
-          selfHeal: true
-        retry:
-          limit: 5
-          backoff:
-            duration: 5s
-            maxDuration: 3m0s
-            factor: 2
-      source:
-        repoURL: https://github.com/esakarya/test
-        targetRevision: master
-        path: '{{path}}'
-      destination:
-        server: https://kubernetes.default.svc
+  destination:
+    namespace: default
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    path: odoo18
+    repoURL: https://github.com/esakarya/test.git
+    targetRevision: HEAD
