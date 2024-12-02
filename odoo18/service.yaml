@@ -6,9 +6,8 @@ metadata:
 spec:
   type: ClusterIP
   ports:
-    - name: odoo
-      port: 8069
-    - name: longpolling
-      port: 8072
+  - port: 80
+    protocol: TCP
+    targetPort: 8069
   selector:
     app: kobimate-odoo18

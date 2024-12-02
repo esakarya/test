@@ -23,4 +23,4 @@ spec:
               service:
                 name: kobimate-odoo18-service
                 port:
-                  number: 8069
+                  number: 80

@@ -53,7 +53,7 @@ spec:
               value: "web,session_redis"
           ports:
             - name: web
-              containerPort: 8069
+              containerPort: 80
             - name: longpolling
               containerPort: 8072
           volumeMounts:
