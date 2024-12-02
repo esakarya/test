@@ -3,7 +3,7 @@ kind: Kustomization
 metadata:
   name: odoo-18-install
 resources:
-- pvc.yaml
-- deployment.yaml
+#- pvc.yaml
+#- deployment.yaml
 - service.yaml
-- ingress.yaml
+#- ingress.yaml
