@@ -4,8 +4,9 @@ metadata:
   name: kobimate-odoo18-ingress
   namespace: argocd
   annotations:
-    kubernetes.io/ingress.class: "nginx"   
+    #kubernetes.io/ingress.class: "nginx"   
     cert-manager.io/cluster-issuer: http-letsencrypt-staging      
+    nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   tls:
     - hosts:
@@ -13,7 +14,7 @@ spec:
       secretName: odoo18-tls
   rules:
     - host: k8.kobimate.com
-      https:
+      http:
         paths:
           - path: /
             pathType: Prefix
