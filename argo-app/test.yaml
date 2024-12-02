@@ -13,9 +13,9 @@ spec:
     path: odoo18
     repoURL: https://github.com/esakarya/test.git
     targetRevision: HEAD
-  inputs:
-    versionA:
-      type: string
-      description: API endpoint for ArgoCD installation
-      display_label: ArgoCD Endpoint
+inputs:
+  versionA:
+    type: string
+    description: API endpoint for ArgoCD installation
+    display_label: ArgoCD Endpoint
 
