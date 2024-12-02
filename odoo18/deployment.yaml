@@ -23,6 +23,15 @@ spec:
         - name: kobimate-odoo18
           image: ghcr.io/kobimate/odoo:18.0-latest
           imagePullPolicy: Always
+          resources:
+            requests:
+              cpu: "1"
+              memory: 1Gi
+          ports:
+            - containerPort: 8069
+              name: web
+            - containerPort: 8072
+              name: websocket
           env:
             #Database connection configuration
             - name: DB_HOST
@@ -51,11 +60,6 @@ spec:
               value: "odoo18"
             - name: SERVER_WIDE_MODULES
               value: "web,session_redis"
-          ports:
-            - name: web
-              containerPort: 8069
-            - name: longpolling
-              containerPort: 8072
           volumeMounts:
             - name: odoo18-kobimate-volume
               mountPath: /data/odoo
