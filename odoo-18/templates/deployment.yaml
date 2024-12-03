@@ -1,27 +1,27 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: "{{ Chart.AppVersion }}-{{ .Values.app_name }}"
+  name: "{{ .Chart.AppVersion  }}-{{ .Values.app_name }}"
   namespace: argocd
   labels:
-    app: "{{ Chart.AppVersion }}-{{ .Values.app_name }}"
+    app: "{{ .Chart.AppVersion  }}-{{ .Values.app_name }}"
 spec:
   replicas: {{ .Values.replicaCount }}
   strategy:
     type: Recreate
   selector:
     matchLabels:
-      app: "{{ Chart.AppVersion }}-{{ .Values.app_name }}"
+      app: "{{ .Chart.AppVersion  }}-{{ .Values.app_name }}"
   template:
     metadata:
       labels:
-        app: "{{ Chart.AppVersion }}-{{ .Values.app_name }}"
+        app: "{{ .Chart.AppVersion  }}-{{ .Values.app_name }}"
     spec:
       imagePullSecrets:
         - name: git-sync-secret
       containers:
-        - name: "{{ Chart.AppVersion }}-{{ .Values.app_name }}"
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+        - name: "{{ .Chart.AppVersion  }}-{{ .Values.app_name }}"
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default ..Chart.AppVersion  }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           resources:
             requests:
@@ -39,7 +39,7 @@ spec:
             - name: DB_REPLICA_HOST
               value: kobimate-pg-r
             - name: DB_NAME
-              value: {{ Chart.AppVersion }}-{{ .Values.app_name }}
+              value: {{ .Chart.AppVersion  }}-{{ .Values.app_name }}
             - name: DB_PASSWORD 
               value: "8639159"
             - name: DB_USER
@@ -61,10 +61,10 @@ spec:
             - name: SERVER_WIDE_MODULES
               value: "web,session_redis"
           volumeMounts:
-            - name: {{ Chart.AppVersion }}-{{ .Values.app_name }}-volume
+            - name: {{ .Chart.AppVersion  }}-{{ .Values.app_name }}-volume
               mountPath: /data/odoo
       terminationGracePeriodSeconds: 10
       volumes:
-        - name: {{ Chart.AppVersion }}-{{ .Values.app_name }}-volume
+        - name: {{ .Chart.AppVersion  }}-{{ .Values.app_name }}-volume
           persistentVolumeClaim:
-            claimName: {{ Chart.AppVersion }}-{{ .Values.app_name }}-pvc
+            claimName: {{ .Chart.AppVersion  }}-{{ .Values.app_name }}-pvc
