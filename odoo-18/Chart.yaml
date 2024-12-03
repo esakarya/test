@@ -2,13 +2,12 @@ apiVersion: v2
 name: odoo-18
 description: A Helm chart for managing additional Odoo 18 Applications and Projects
 type: application
-version: 1.0.0
+version: 1.0.1
 AppVersion: 18.0
 home: https://github.com/argoproj/argo-helm
 icon: https://argo-cd.readthedocs.io/en/stable/assets/logo.png
 keywords:
   - odoo18
-
 maintainers:
   - name: kobimate
     url: https://kobimate.com/
