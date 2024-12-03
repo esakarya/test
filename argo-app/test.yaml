@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: https://github.com/esakarya/test
     chart: odoo-18
-    targetRevision: "HEAD"
+    targetRevision: HEAD
     helm:
       values: |
         app_name: b2bpoke
