@@ -21,7 +21,7 @@ spec:
         - name: git-sync-secret
       containers:
         - name: "{{ .Chart.AppVersion  }}-{{ .Values.app_name }}"
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default ..Chart.AppVersion  }}"
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion  }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           resources:
             requests:
