@@ -5,7 +5,7 @@ metadata:
 spec:
   type: ClusterIP
   ports:
-    - name: {{ .Values.appname }}
+    - name: web
       port: {{ .Values.ports.web }}
       protocol: TCP
       targetPort: {{ .Values.ports.web }}
