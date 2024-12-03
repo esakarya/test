@@ -1,22 +1,24 @@
-#https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/application.yaml
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: odoo-18-ap
+  name: b2bpoke
   namespace: argocd
-  inputs:
-      parameters:
-      - name: app-name
-      - name: app-image
-      - name: app-env
-      - name: app-replicas
 spec:
-  destination:
-    namespace: argocd
-    server: https://kubernetes.default.svc
   project: default
   source:
-    path: odoo18
-    repoURL: https://github.com/esakarya/test.git
-    targetRevision: HEAD
-
+    repoURL: https://github.com/esakarya/test
+    chart: odoo-18
+    targetRevision: "*"
+    helm:
+      values: |
+        app_name: b2bpoke
+        host: b2bpoke.kobimate.com
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: argocd
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    #syncOptions:
+    #  - CreateNamespace=true
