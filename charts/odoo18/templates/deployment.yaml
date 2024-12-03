@@ -1,0 +1,70 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: "{{ Chart.AppVersion }}-{{ .Values.app_name }}"
+  namespace: argocd
+  labels:
+    app: "{{ Chart.AppVersion }}-{{ .Values.app_name }}"
+spec:
+  replicas: {{ .Values.replicaCount }}
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: "{{ Chart.AppVersion }}-{{ .Values.app_name }}"
+  template:
+    metadata:
+      labels:
+        app: "{{ Chart.AppVersion }}-{{ .Values.app_name }}"
+    spec:
+      imagePullSecrets:
+        - name: git-sync-secret
+      containers:
+        - name: "{{ Chart.AppVersion }}-{{ .Values.app_name }}"
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          resources:
+            requests:
+              cpu: "1"
+              memory: 1Gi
+          ports:
+            - containerPort: {{ .Values.ports.web }}
+              name: web
+            - containerPort: {{ .Values.ports.websocket }}
+              name: websocket
+          env:
+            #Database connection configuration
+            - name: DB_HOST
+              value: kobimate-pg-rw
+            - name: DB_REPLICA_HOST
+              value: kobimate-pg-r
+            - name: DB_NAME
+              value: {{ Chart.AppVersion }}-{{ .Values.app_name }}
+            - name: DB_PASSWORD 
+              value: "8639159"
+            - name: DB_USER
+              value: odoo
+            - name: LIST_DB
+              value: "true"
+            - name: ADMIN_PASSWD
+              value: "$pbkdf2-sha512$25000$Vuq919pbq7XW2tubsxZibA$1G82RkbAGJuADzQ8sCvWtj9287UeLqmhal5agD1n73oQOP8L6yy2ZJhTiDs.ESy/HWiAVC9AxTLkNLMy9jgeoA"
+            - name: ODOO_SESSION_REDIS
+              value: "1"
+            - name: ODOO_SESSION_REDIS_HOST
+              value: "argocd-redis-ha-haproxy"
+            - name: ODOO_SESSION_REDIS_PORT
+              value: "6379"
+            - name: ODOO_SESSION_REDIS_PASSWORD
+              value: "EG95ErbDpxt4t01g"
+            - name: ODOO_SESSION_REDIS_PREFIX
+              value: "odoo18"
+            - name: SERVER_WIDE_MODULES
+              value: "web,session_redis"
+          volumeMounts:
+            - name: {{ Chart.AppVersion }}-{{ .Values.app_name }}-volume
+              mountPath: /data/odoo
+      terminationGracePeriodSeconds: 10
+      volumes:
+        - name: {{ Chart.AppVersion }}-{{ .Values.app_name }}-volume
+          persistentVolumeClaim:
+            claimName: {{ Chart.AppVersion }}-{{ .Values.app_name }}-pvc

@@ -1,0 +1,19 @@
+# Default values for hello-world.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+app_name yesildagb2b
+
+host k8.kobimate.com
+
+replicaCount 1
+
+image
+  repository ghcr.io/kobimate/odoo
+  pullPolicy IfNotPresent
+  # Overrides the image tag whose default is the chart appVersion.
+  tag 18.0-latest
+  
+ports
+  web 8069
+  websocket 8072
