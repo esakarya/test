@@ -7,10 +7,10 @@ spec:
   project: default
   source:
     repoURL: https://github.com/esakarya/test
-    chart: odoo-18
+    path: odoo-18
     targetRevision: HEAD
     helm:
-      values: |
+      parameters: |
         app_name: b2bpoke
         host: b2bpoke.kobimate.com
   destination:
