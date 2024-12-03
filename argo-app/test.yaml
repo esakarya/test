@@ -11,8 +11,10 @@ spec:
     targetRevision: HEAD
     helm:
       parameters: |
-        app_name: b2bpoke
-        host: b2bpoke.kobimate.com
+        -name: app_name
+         value: b2bpoke
+        -name: host
+         value: b2bpoke.kobimate.com
   destination:
     server: https://kubernetes.default.svc
     namespace: argocd
